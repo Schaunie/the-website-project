@@ -151,61 +151,57 @@ function Step({ number, icon, text, picture }) {
         }
     }, [refStep.current])
 
-    useEffect(() => {
-        function animatom() {
+    function animatom() {
+        const svgBackground = document.getElementById('process_steps_background'); const tl = gsap.timeline();
 
-        const svgBackground = document.getElementById('process_steps_background');        const tl = gsap.timeline();
-        
         switch (svgBackground.getAttribute("viewBox")) {
-            case ("225 0 150 1499.999933") : 
-            // From starting point to first step
-            tl.to('.process_steps_background', { attr:{viewBox:"225 120 150 1499.999933"} });
-            tl.to('.process_steps_background', { attr:{viewBox:"75 85 150 1499.999933", width:"200"}});
-            tl.to('.step_wrapper_1', {opacity:1});
-            break
+            case ("225 0 150 1499.999933"):
+                // From starting point to first step
+                tl.to('.process_steps_background', { attr: { viewBox: "225 120 150 1499.999933" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "75 85 150 1499.999933", width: "200" } });
+                tl.to('.step_wrapper_1', { opacity: 1 });
+                break
 
-            case ("75 85 150 1499.999933") : 
-            // From first step to second step
-            tl.to('.step_wrapper_1', {opacity: 0, delay: 1});
-            tl.to('.process_steps_background', { attr:{viewBox:"225 120 150 1499.999933", width:"350"}});
-            tl.to('.process_steps_background', { attr:{viewBox:"225 442 160 1499.999933"}});
-            tl.to('.process_steps_background', { attr:{viewBox:"355 402 160 1499.999933", width:"200"}});
-            tl.to('.step_wrapper_2', {opacity:1});
-            break
+            case ("75 85 150 1499.999933"):
+                // From first step to second step
+                tl.to('.step_wrapper_1', { opacity: 0, delay: 1 });
+                tl.to('.process_steps_background', { attr: { viewBox: "225 120 150 1499.999933", width: "350" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "225 442 160 1499.999933" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "355 402 160 1499.999933", width: "200" } });
+                tl.to('.step_wrapper_2', { opacity: 1 });
+                break
 
-            case("355 402 160 1499.999933") : 
-            // From second to third
-            tl.to('.step_wrapper_2', {opacity:0, delay:1});
-            tl.to('.process_steps_background', { attr:{viewBox:"225 442 160 1499.999933", width:"350"}});
-            tl.to('.process_steps_background', { attr:{viewBox:"225 740 160 1499.999933"}});
-            tl.to('.process_steps_background', { attr:{viewBox:"75 700 160 1499.999933", width:"200"}});
-            tl.to('.step_wrapper_3', {opacity:1});
-            break
+            case ("355 402 160 1499.999933"):
+                // From second to third
+                tl.to('.step_wrapper_2', { opacity: 0, delay: 1 });
+                tl.to('.process_steps_background', { attr: { viewBox: "225 442 160 1499.999933", width: "350" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "225 740 160 1499.999933" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "75 700 160 1499.999933", width: "200" } });
+                tl.to('.step_wrapper_3', { opacity: 1 });
+                break
 
-            case("75 700 160 1499.999933") : 
-            // From third to fourth
-            tl.to('.step_wrapper_3', {opacity:0, delay:1});
-            tl.to('.process_steps_background', { attr:{viewBox:"225 740 160 1499.999933", width:"350"}});
-            tl.to('.process_steps_background', { attr:{viewBox:"225 1045 160 1499.999933"}});
-            tl.to('.process_steps_background', { attr:{viewBox:"355 1005 160 1499.999933", width:"200"}});
-            tl.to('.step_wrapper_4', {opacity:1});
-            break
+            case ("75 700 160 1499.999933"):
+                // From third to fourth
+                tl.to('.step_wrapper_3', { opacity: 0, delay: 1 });
+                tl.to('.process_steps_background', { attr: { viewBox: "225 740 160 1499.999933", width: "350" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "225 1045 160 1499.999933" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "355 1005 160 1499.999933", width: "200" } });
+                tl.to('.step_wrapper_4', { opacity: 1 });
+                break
 
-            case("355 1005 160 1499.999933") : 
-            // From fourth to last
-            tl.to('.step_wrapper_4', {opacity:0, delay:1});
-            tl.to('.process_steps_background', { attr:{viewBox:"225 1045 160 1499.999933", width:"350"}});
-            tl.to('.process_steps_background', { attr:{viewBox:"225 1350 160 1499.999933"}});
-            tl.to('.process_steps_background', { attr:{viewBox:"75 1315 160 1499.999933", width:"200"}});
-            tl.to('.step_wrapper_5', {opacity:1});
-            break
+            case ("355 1005 160 1499.999933"):
+                // From fourth to last
+                tl.to('.step_wrapper_4', { opacity: 0, delay: 1 });
+                tl.to('.process_steps_background', { attr: { viewBox: "225 1045 160 1499.999933", width: "350" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "225 1350 160 1499.999933" } });
+                tl.to('.process_steps_background', { attr: { viewBox: "75 1315 160 1499.999933", width: "200" } });
+                tl.to('.step_wrapper_5', { opacity: 1 });
+                break
         }
     }
-    animatom();
-    },[isScrolled])
 
     return (
-        <StepWrapper onScroll={()=>setIsScrolled(!isScrolled)} className={'step_wrapper_'+number} $isLeftStepVisible={isVisible && number % 2 !== 0} $isRightStepVisible={isVisible && number % 2 === 0} ref={refStep}>
+        <StepWrapper onScroll={() => animatom()} className={'step_wrapper_' + number} $isLeftStepVisible={isVisible && number % 2 !== 0} $isRightStepVisible={isVisible && number % 2 === 0} ref={refStep}>
             <Number>{number}</Number>
             <TextIllusWrapper>
                 <StyledText>{text}</StyledText>
