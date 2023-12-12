@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import { SurveyProvider } from './utils/context';
 import Home from './pages/Home';
 import Results from './pages/Results'
@@ -12,7 +12,7 @@ import OurProject from './pages/OurProject';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
+    <HashRouter>
       <SurveyProvider>
         <GlobalStyle />
         <Header />
@@ -23,7 +23,7 @@ root.render(
         </Routes>
         <Footer />
       </SurveyProvider>
-    </Router>
+    </HashRouter>
   </React.StrictMode>
 );
 

@@ -1,5 +1,5 @@
 {
-  "homepage": "https://schaunie.github.io/the-website-project",
+  "homepage": "https://schaunie.github.io/the-website-project/#",
   "name": "the-website-project",
   "version": "0.1.0",
   "private": true,
@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^6.1.0"
   }
 }
